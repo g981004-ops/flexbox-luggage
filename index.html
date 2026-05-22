@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Luggage 🧳 — 用旅行學 CSS Flexbox</title>
+  <meta name="description" content="透過打包行李的互動遊戲，輕鬆學習 CSS Flexbox 排版技巧！七個旅遊關卡，從台北到環遊世界。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="main-header">
+    <div class="logo">
+      <span class="logo-icon">🧳</span>
+      <span class="logo-text">Flexbox <span class="logo-accent">Luggage</span></span>
+    </div>
+    <div class="progress-track" id="progress-track"></div>
+    <span class="level-counter" id="level-counter">關卡 1 / 7</span>
+  </header>
+
+  <!-- Main Game -->
+  <main id="game-container">
+
+    <!-- Destination Banner -->
+    <div class="destination-banner" id="destination-banner">
+      <div class="destination-tag" id="destination-tag">
+        <span id="dest-emoji">🏙️</span>
+        <span id="dest-name">台北</span>
+      </div>
+      <p class="story-text" id="story-text"></p>
+    </div>
+
+    <!-- Game Area -->
+    <div class="game-area">
+
+      <!-- Left: Code Panel -->
+      <div class="code-panel">
+        <div class="panel-header">
+          <span class="panel-icon">✏️</span>
+          <h3>填入 CSS 屬性</h3>
+        </div>
+        <div class="css-editor">
+          <div class="code-line comment">/* 幫行李箱設定 CSS！ */</div>
+          <div class="code-line selector" id="css-selector">.suitcase {</div>
+          <div id="property-rows"></div>
+          <div class="code-line closing">}</div>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-primary" id="check-btn" onclick="checkAnswer()">✅ 確認排列</button>
+          <button class="btn-secondary" id="hint-btn" onclick="showHint()">💡 提示</button>
+        </div>
+        <div class="hint-box hidden" id="hint-box"></div>
+        <div class="error-box hidden" id="error-box">❌ 還不太對，再試試看！</div>
+      </div>
+
+      <!-- Right: Visual Panel -->
+      <div class="visual-panel">
+        <div class="suitcases-row">
+
+          <!-- Target Suitcase -->
+          <div class="suitcase-section">
+            <div class="suitcase-label target-label">🎯 目標排列</div>
+            <div class="suitcase-shell">
+              <div class="suitcase-handle"></div>
+              <div class="suitcase-body">
+                <div class="suitcase-interior" id="target-interior"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-divider">VS</div>
+
+          <!-- Player Suitcase -->
+          <div class="suitcase-section">
+            <div class="suitcase-label player-label">🧳 你的行李箱</div>
+            <div class="suitcase-shell player-shell">
+              <div class="suitcase-handle"></div>
+              <div class="suitcase-body">
+                <div class="suitcase-interior" id="player-interior"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="css-preview" id="css-preview">
+          <code id="current-css-display">.suitcase { display: block; }</code>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Success Overlay -->
+  <div class="overlay hidden" id="success-overlay">
+    <div class="success-card">
+      <div class="success-plane" id="success-plane">✈️</div>
+      <h2 class="success-title">出發！</h2>
+      <p class="success-message" id="success-message"></p>
+      <div class="success-concept" id="success-concept"></div>
+      <p class="next-dest" id="next-dest"></p>
+      <button class="btn-next" id="next-btn" onclick="nextLevel()">下一關 →</button>
+    </div>
+    <div id="confetti-container"></div>
+  </div>
+
+  <!-- Final Complete Overlay -->
+  <div class="overlay hidden" id="complete-overlay">
+    <div class="complete-card">
+      <div class="complete-emoji">🌍</div>
+      <h1>環遊世界完成！</h1>
+      <p>恭喜！你已經掌握 CSS Flexbox 的核心技巧！</p>
+      <div class="skills-learned" id="skills-learned"></div>
+      <button class="btn-restart" onclick="restartGame()">🔄 再玩一次</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
